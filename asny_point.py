@@ -17,7 +17,7 @@ def resize(image):
     new_height = 300
     img = img.resize((new_width, new_height), Image.ANTIALIAS)
     return img
-
+#Comment Tesst
 async def point():
     rgb = resize(Image.open(input("color")))
     depth = resize(Image.open(input("depth")))
