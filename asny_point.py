@@ -9,7 +9,7 @@ import asyncio
 from itertools import chain 
 from scr import mat_con
 import math as m
-FL = 200
+FL = 200 #github is so stupid
 scalingFactor = 200
 def resize(image):
     img = image 
