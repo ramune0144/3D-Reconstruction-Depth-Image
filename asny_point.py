@@ -74,14 +74,6 @@ async def color(rgb):
             
     return np.vstack((colorR,colorG,colorB)).transpose()    
 count_json = 1    
-def _json():
-   global count_json
-   color = ''
-   depth = ''
-   color = set_file[0][str(count_json)]
-   depth =set_file[1][str(count_json)]
-   count_json+=1
-   return color,depth
 
 
 point_c=[]
