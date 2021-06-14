@@ -31,7 +31,7 @@ async def point():
     )
     colorpoint = await asyncio.gather(color(rgb))      
     return colorpoint,Points
-
+#123545
 
 async def point_x(rgb,centerX,depth):
     point_X=[]
