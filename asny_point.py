@@ -9,7 +9,7 @@ import asyncio
 from itertools import chain 
 from scr import mat_con
 import math as m
-FL = 200#fl val is not defind
+FL = 200#555
 scalingFactor = 200
 def resize(image):
     img = image 
