@@ -16,3 +16,6 @@ hello()
 
 def pe_ts(i):
     print(i)
+
+pad_kar_pow=["rice","garlic","sweet basil","pork","chili"]
+print("\n".join(map(str,pad_kar_pow)))
