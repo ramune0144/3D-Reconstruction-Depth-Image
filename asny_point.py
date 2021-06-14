@@ -6,10 +6,10 @@ import numpy as np
 import open3d as o3d
 import matplotlib.pyplot as plt
 import asyncio 
-from itertools import chain 
+from itertools import chain  #5556662120
 from scr import mat_con
 import math as m
-FL = 200 #github is so stupid
+FL = 200#hew teen
 scalingFactor = 200
 def resize(image):
     img = image 
@@ -31,7 +31,7 @@ async def point():
     )
     colorpoint = await asyncio.gather(color(rgb))      
     return colorpoint,Points
-
+#123545
 
 async def point_x(rgb,centerX,depth):
     point_X=[]
