@@ -101,13 +101,17 @@ for i in range(0,pic_loop):
     point_s.append(np.vstack((res[i][1][0],res[i][1][1],res[i][1][2])).transpose())
     point_c+=res[i][0]
 point_c = list(chain.from_iterable(point_c))
-
+'''
 for i in range(len(point_s[1])):
     point_s[1][i] = point_s[1][i]*mat_con._R(phi,theta,psi)
+''' #it can use but to slow -*-
 
+#ส่วนเเสดงผล
 v = pptk.viewer(point_s)  
 v.attributes(point_c)
 v.set(point_size=0.001,bg_color=[0,0,0,0],show_axis=0,show_grid=0)
-with open("D:\extitool\output.txt", "w") as txt_file:
+
+'''with open("D:\extitool\output.txt", "w") as txt_file:
     for line in point_s:
         txt_file.write("".join(str(line)) + "\n") 
+'''
