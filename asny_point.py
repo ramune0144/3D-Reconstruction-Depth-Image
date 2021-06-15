@@ -72,7 +72,7 @@ async def color(rgb):
             colorG.append(color[1]/255)#g
             colorB.append(color[2]/255)#b
             
-    return np.vstack((colorR,colorG,colorB)).transpose()    
+    return  np.vstack((colorR,colorG,colorB)).transpose()    
    
 
 
