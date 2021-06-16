@@ -111,7 +111,4 @@ v = pptk.viewer(point_s)
 v.attributes(point_c)
 v.set(point_size=0.001,bg_color=[0,0,0,0],show_axis=0,show_grid=0)
 
-'''with open("D:\extitool\output.txt", "w") as txt_file:
-    for line in point_s:
-        txt_file.write("".join(str(line)) + "\n") 
-'''
+
