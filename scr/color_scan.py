@@ -5,7 +5,6 @@ g = 1
 b = 0
 color = [(r,g,b)]
 rgb = Image.open(input("color"))
-
 def img_scan(rgb,color):
     cod = []
     v_point = True
