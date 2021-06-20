@@ -1,6 +1,6 @@
 from PIL import Image
 import numpy as np
-r = 10
+r = 10 #color 
 g = 1
 b = 0
 color = [(r,g,b)]
