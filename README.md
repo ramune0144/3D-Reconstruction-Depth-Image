@@ -1,5 +1,5 @@
 # project_3d_recon
-> main = asny_point.py
+> main = point.py
 >
 >> - To do
 >>     - ทำให้ประมวลผลหลายๆภาพเพื่อกลายเป็น3Dที่มีครบทุกมุมได้
