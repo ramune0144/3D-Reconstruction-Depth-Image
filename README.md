@@ -2,4 +2,6 @@
 > main = asny_point.py
 >
 >> - To do
->>     - add func for input many 2d and depth for one 3d
+>>     - ทำให้ประมวลผลหลายๆภาพเพื่อกลายเป็น3Dที่มีครบทุกมุมได้
+>>     - ทำให้กินเเรมน้องลง **หากทำได้**
+>>     - ประมวลผลเเบบ asynchronous **กำลังทำ**
