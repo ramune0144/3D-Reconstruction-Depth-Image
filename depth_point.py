@@ -5,7 +5,6 @@ import pptk
 import numpy as np
 import open3d as o3d
 import matplotlib.pyplot as plt
-import asyncio 
 from itertools import chain  #5556662120
 from scr import mat_con,data
 import math as m
