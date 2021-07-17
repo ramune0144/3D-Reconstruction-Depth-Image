@@ -8,7 +8,31 @@
         
 "depth":["d:\\extitool\\IMAGE1_depth.jpgeiei.png",
          "d:\\extitool\\Screenshot_4.jpg ",
-         "d:\\extitool\\Screenshot_2.jpgeiei.png"]
+         "d:\\extitool\\Screenshot_2.jpgeiei.png"],
+ 
 
+"plcL":[
+        "D:\\project_3d_recon\\Duck\\L\\Duck_000.ply",
+        "D:\\project_3d_recon\\Duck\\L\\Duck_001.ply",
+        "D:\\project_3d_recon\\Duck\\L\\Duck_002.ply",
+        "D:\\project_3d_recon\\Duck\\L\\Duck_003.ply",
+        "D:\\project_3d_recon\\Duck\\L\\Duck_004.ply",
+        "D:\\project_3d_recon\\Duck\\L\\Duck_005.ply",
+        "D:\\project_3d_recon\\Duck\\L\\Duck_006.ply",
+        "D:\\project_3d_recon\\Duck\\L\\Duck_014.ply"
+
+]
+,
+"plcR":[ 
+        "D:\\project_3d_recon\\Duck\\R\\Duck_007.ply",
+        "D:\\project_3d_recon\\Duck\\R\\Duck_008.ply",
+        "D:\\project_3d_recon\\Duck\\R\\Duck_009.ply",
+        "D:\\project_3d_recon\\Duck\\R\\Duck_010.ply",
+        "D:\\project_3d_recon\\Duck\\R\\Duck_011.ply",
+        "D:\\project_3d_recon\\Duck\\R\\Duck_012.ply",
+        "D:\\project_3d_recon\\Duck\\R\\Duck_013.ply",
+        "D:\\project_3d_recon\\Duck\\R\\Duck_015.ply"
+
+]         
 
 }
