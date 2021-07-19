@@ -12,13 +12,13 @@ if __name__ == "__main__":
     dat = data.json_read("setting.json")
     point_cloud_dat = dat["plcL"]   
     threshold =10
-    trans_init = np.asarray([[1., 0., 0., 0],
-                      [0., 1., 0., 0.],
-                      [0., 0., 1., 0.],
-                      [0., 0., 0., 1.]])
+    trans_init = np.asarray([[1., 0., 0., .0],
+                             [0., 1., 0., 0.],
+                             [0., 0., 1., 0.],
+                             [0., 0., 0., 1.]])
                       
 
-point_temp=[]   
+point_temp=[]
 for i in point_cloud_dat:
     all_data.append(o3d.io.read_point_cloud(i))
 # for v in all_data:
@@ -28,9 +28,14 @@ for i in point_cloud_dat:
 #     source = icp_op3d.combine_plane(source,point,threshold,trans_init)
 #source = source.transform(trans_init) +target.transform(trans_init) 
 # source = source.transform(trans_init)+target
+
+
 tran = icp_op3d.registration_point_plane(source,target,threshold,trans_init)
+
+
 #draw_o3d.draw_registration_result(source, target,  trans_init)
 # tran = icp_op3d.registration_point_plane(source,target,threshold,trans_init)
+
 draw_o3d.draw_registration_result(source, target, tran.transformation)
 
 draw_o3d.save_registration_result(source,target,tran.transformation,"compl")
