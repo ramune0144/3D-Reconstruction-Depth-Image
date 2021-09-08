@@ -1,6 +1,6 @@
-import open3d as o3d
+import open3d as o3d 
 import numpy as np
-from scr import draw_o3d
+
 
 
 
@@ -19,7 +19,8 @@ def registration_point_point(pdc_s,pdc_t,threshold,trans_init):#s:source,t:targe
         o3d.registration.TransformationEstimationPointToPoint(),
         
         o3d.registration.ICPConvergenceCriteria(max_iteration=200000))
-    print(reg_p2p)
+    print("inlier_rmse is:")
+    print(reg_p2p.inlier_rmse)
     print("Transformation is:")
     print(reg_p2p.transformation)
     return reg_p2p
@@ -28,17 +29,18 @@ def registration_point_point(pdc_s,pdc_t,threshold,trans_init):#s:source,t:targe
 def registration_point_plane(pdc_s,pdc_t,threshold,trans_init):#s:source,t:target
     o3d.geometry.estimate_normals(
         pdc_s,
-        search_param=o3d.geometry.KDTreeSearchParamHybrid(radius=0.1,
-                                                          max_nn=30))
+        search_param=o3d.geometry.KDTreeSearchParamHybrid(radius=2,
+                                                          max_nn=1))
     o3d.geometry.estimate_normals(
         pdc_t,
-        search_param=o3d.geometry.KDTreeSearchParamHybrid(radius=0.1,
-                                                          max_nn=30))
+        search_param=o3d.geometry.KDTreeSearchParamHybrid(radius=2,
+                                                          max_nn=1))
     print("Apply point-to-plane ICP")
     reg_p2l = o3d.registration.registration_icp(
         pdc_s, pdc_t, threshold, trans_init,
         o3d.registration.TransformationEstimationPointToPlane())
-    print(reg_p2l)
+    print("inlier_rmse is:")
+    print(reg_p2l.inlier_rmse)
     print("Transformation is:")
     print(reg_p2l.transformation)
     return reg_p2l

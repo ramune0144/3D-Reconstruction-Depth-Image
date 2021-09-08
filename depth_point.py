@@ -19,8 +19,8 @@ scalingFactor = 200
 
 def resize(image):
     img = image
-    new_width = 200
-    new_height = 300
+    new_width = 2000
+    new_height = 3000
     img = img.resize((new_width, new_height), Image.ANTIALIAS)
     return img
 
@@ -50,10 +50,10 @@ def point(rgba, deptha):
     point_X = []
     point_Y = []
     point_Z = []
-    colorR = []
-    colorG = []
-    colorB = []
-    depth = depth.convert('I')  # Grayscale
+    colorR  = []
+    colorG  = []
+    colorB  = []
+    depth   = depth.convert('I')  # Grayscale
     for v in range(rgb.size[1]):  # height
         for u in range(rgb.size[0]):  # width
             Z = depth.getpixel((u, v))/scalingFactor
