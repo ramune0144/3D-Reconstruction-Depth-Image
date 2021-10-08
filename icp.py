@@ -7,8 +7,8 @@ import copy
 if __name__ == "__main__":
     rms =[]
     fit =[]
-    for i in range(1,51):
-        source = o3d.io.read_point_cloud("./source/query_4.ply")#4
+    for i in range(1,97):
+        source = o3d.io.read_point_cloud("./source/query_1.ply")#4
         target = o3d.io.read_point_cloud(f"./tragets/T{i}.ply")
         threshold = 10
         trans_init = np.asarray([[1., 0., 0., 0],
@@ -21,7 +21,8 @@ if __name__ == "__main__":
             source, target, threshold, trans_init)
         print(evaluation)
 
-        icp_data = icp_op3d.registration_point_point(source,target,threshold,trans_init)
+        icp_data = icp_op3d.registration_point_plane(source,target,threshold,trans_init)
+        icp_data = icp_op3d.registration_point_point(source,target,threshold, icp_data.transformation )
         rms.append(icp_data.inlier_rmse)
         fit.append(icp_data.fitness)
     print("----------top good rms (0<rms<3) is---------")    

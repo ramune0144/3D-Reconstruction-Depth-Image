@@ -21,4 +21,4 @@ def Rz(theta):
 def _R(phi,theta,psi):
     R = Rz(psi) * Ry(theta) * Rx(phi)
     return R
-#print(np.round(_R(phi,theta,psi), decimals=2))
+print(np.round(_R(np.pi,0,1), decimals=2))
