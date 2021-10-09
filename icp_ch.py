@@ -1,8 +1,6 @@
 import open3d as o3d
-import numpy as np
 from scr import draw_o3d
 from scr import icp_op3d
-from scr import mat_con
 from scr import RANSAC as rs
 if __name__ == "__main__":
     rms =[]
@@ -20,6 +18,8 @@ if __name__ == "__main__":
 
     tran = icp_op3d.registration_point_plane(source,target,threshold,trans_init.transformation)
     tran = icp_op3d.registration_point_point(source,target,threshold, tran.transformation )
+    tran = icp_op3d.registration_point_point(source,target,threshold, tran.transformation )
+
     draw_o3d.draw_registration_result(source, target, tran.transformation)
    
     
