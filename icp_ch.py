@@ -1,7 +1,12 @@
+from numpy.core.records import format_parser
 import open3d as o3d
 from scr import draw_o3d
-from scr import icp_op3d,point_read_dir
+from scr import icp_op3d,point_read_dir,mk_con
 from scr import RANSAC as rs
+import seaborn as sns
+import numpy as np
+import matplotlib.pyplot as plt
+from tqdm import tqdm
 if __name__ == "__main__":
     rms =[]
     voxel_size = 10   
@@ -15,6 +20,9 @@ if __name__ == "__main__":
     point_qre_270_1 = []
     point_qre_270_2 = []
     point_qre_270_3 = []
+    point_qre_norm_1 = []
+    point_qre_norm_2 = []
+    point_qre_norm_3 = []
     list_qur = ['x','y','z']
     for i in list_qur:
         point_qre_90_1.append( point_read_dir.read_dir_point(f'./cut/{i}/90/1'))
@@ -28,6 +36,9 @@ if __name__ == "__main__":
         point_qre_270_1.append( point_read_dir.read_dir_point(f'./cut/{i}/270/1'))
         point_qre_270_2.append(point_read_dir.read_dir_point(f'./cut/{i}/270/2'))
         point_qre_270_3.append( point_read_dir.read_dir_point(f'./cut/{i}/270/3'))
+    point_qre_norm_1.append( point_read_dir.read_dir_point(f'./cut/norm/1'))
+    point_qre_norm_2.append( point_read_dir.read_dir_point(f'./cut/norm/2'))
+    point_qre_norm_3.append( point_read_dir.read_dir_point(f'./cut/norm/3'))
         # print(point_qre_90_1[0])
     src = []      
     
@@ -35,21 +46,22 @@ if __name__ == "__main__":
     src = point_read_dir.read_dir_point(f'./source')
     rms = []
     name = []
-   
-    for ind,j in enumerate(src[0]):
+    fit_nes = []
+    for ind in tqdm(range( len (src[0]))):
         rms.append([])
         name.append([])
         scr_name_app.append([])
+        fit_nes.append([])
         source = src[0][ind]
         src_name=src[1][ind]
         
-        for i,v in  enumerate( point_qre_90_1[1][0]):   
+        for i in  tqdm(range( len( point_qre_270_3[2][0]))):   #point_qre_norm_1[0][0]   #point_qre_90_1[1][0]
         
         
-                target = point_qre_90_1[1][0][i]
+                target = point_qre_270_3[2][0][i]
         
                 trans_init = rs.prepare_dataset(source,target,voxel_size)
-                print(trans_init )
+                # print(trans_init )
      
         # evaluation = o3d.pipelines.registration.evaluate_registration(
         #     source, target, threshold, trans_init.transformation)
@@ -58,13 +70,58 @@ if __name__ == "__main__":
                 tran = icp_op3d.registration_point_plane(source,target,threshold,trans_init.transformation)
                 tran = icp_op3d.registration_point_point(source,target,threshold, tran.transformation )
                 tran = icp_op3d.registration_point_point(source,target,threshold, tran.transformation )
-                rms[ind].append(tran.inlier_rmse )
-                name[ind].append(point_qre_90_1[1][1][i])
-                scr_name_app[ind].append(src_name)
                 
+                if tran.inlier_rmse != 0 :
+                    rms[ind].append(tran.inlier_rmse )
+                    name[ind].append(point_qre_270_3[2][1][i])
+                    scr_name_app[ind].append(src_name)
+                    fit_nes[ind].append(tran.fitness)    
+true_g = []
+pred = []
+
 for j in range(len(rms)):
-    rms_a, name_a,scr_name_app_a = (list(t) for t in zip(*sorted(zip(rms[j], name[j],scr_name_app[j]))))        
+    rms_a, name_a,scr_name_app_a,fit_nes_a = (list(t) for t in zip(*sorted(zip(rms[j], name[j],scr_name_app[j],fit_nes[j]))))        
     for i in range(len(rms_a)):
-        print(f'rms:{rms_a[i]} :: name:{ name_a[i]} :: scr_name{scr_name_app_a[i]} ')
-    print('true' if name_a[0].split('.')[0] == scr_name_app_a[0].split('.')[0] else 'False' )   
-    print("=====================================================================================")
+        print(f'rms:{rms_a[i]} :: fit{fit_nes_a[i]} :: name::{ name_a[i]} :: scr_name::{scr_name_app_a[i]} ')
+    ##############################c1##########################################################################
+    # if name_a[0].split('.')[0] == scr_name_app_a[0].split('.')[0]:
+    #      print(f'rms:{rms_a[0]} ::fit{fit_nes_a[0]}:: name::{ name_a[0]} :: scr_name::{scr_name_app_a[0]} ')
+    # # print('true' if name_a[0].split('.')[0] == scr_name_app_a[0].split('.')[0] else 'False' )
+    #      true_g.append(name_a[0].split('.')[0])
+    #      pred.append(scr_name_app_a[0].split('.')[0])
+    #      print('True==>rms')
+    # if not (name_a[0].split('.')[0] == scr_name_app_a[0].split('.')[0]):
+    #     fit_nes_a, name_a,scr_name_app_a,rms_a = (list(t) for t in zip(*sorted(zip(fit_nes[j], name[j],scr_name_app[j],rms[j]),reverse = True)))  
+    #     if name_a[0].split('.')[0] == scr_name_app_a[0].split('.')[0]:
+    #         print(f'rms:{rms_a[0]} ::fit{fit_nes_a[0]}:: name::{ name_a[0]} :: scr_name::{scr_name_app_a[0]} ')
+    # # print('true' if name_a[0].split('.')[0] == scr_name_app_a[0].split('.')[0] else 'False' )
+    #         true_g.append(name_a[0].split('.')[0])
+    #         pred.append(scr_name_app_a[0].split('.')[0])
+    #         print('True==>fit')
+    #     else:
+    #         print(f'rms:{rms_a[0]} ::fit{fit_nes_a[0]}:: name::{ name_a[0]} :: scr_name::{scr_name_app_a[0]} ')
+    #         true_g.append(name_a[0].split('.')[0])
+    #         pred.append(scr_name_app_a[0].split('.')[0])
+    #         print('False')
+    # print("=====================================================================================")
+    ##########################################################################################################################
+    ###########c2#############################################################################################################
+    found = False
+    for i in range(4):
+        if name_a[i].split('.')[0] == scr_name_app_a[i].split('.')[0]:
+             print(f'rms:{rms_a[i]} ::fit{fit_nes_a[i]}:: name::{ name_a[i]} :: scr_name::{scr_name_app_a[i]} ')
+             true_g.append(name_a[i].split('.')[0])
+             pred.append(scr_name_app_a[i].split('.')[0])
+             print('True==>c2')
+             found = True
+    if found == False:
+        true_g.append(name_a[0].split('.')[0])
+        pred.append(scr_name_app_a[0].split('.')[0])
+        print('False')
+    ##########################################################################################################################
+from sklearn.metrics import confusion_matrix
+cf_matrix = confusion_matrix(true_g, pred)  
+print(cf_matrix)
+mk_con. make_confusion_matrix(cf_matrix, cbar=False)
+
+plt.show()
