@@ -11,10 +11,10 @@ def registration_point_point(pdc_s,pdc_t,threshold,trans_init):#s:source,t:targe
     downpcd2 = pdc_t.voxel_down_sample(voxel_size=0.05)
    
     downpcd1.estimate_normals(
-    search_param=o3d.geometry.KDTreeSearchParamHybrid(radius=0.1, max_nn=30))
+    search_param=o3d.geometry.KDTreeSearchParamHybrid(radius=0.1, max_nn=10))
    
     downpcd2.estimate_normals(
-    search_param=o3d.geometry.KDTreeSearchParamHybrid(radius=0.1, max_nn=30))
+    search_param=o3d.geometry.KDTreeSearchParamHybrid(radius=0.1, max_nn=10))
     # o3d.geometry.estimate_normals(
     #     pdc_s,
     #     search_param=o3d.geometry.KDTreeSearchParamHybrid(radius=0.1,
@@ -42,10 +42,10 @@ def registration_point_plane(pdc_s,pdc_t,threshold,trans_init):#s:source,t:targe
     downpcd2 = pdc_t.voxel_down_sample(voxel_size=0.05)
     
     downpcd1.estimate_normals(
-    search_param=o3d.geometry.KDTreeSearchParamHybrid(radius=0.1, max_nn=30))
+    search_param=o3d.geometry.KDTreeSearchParamHybrid(radius=0.1, max_nn=10))
    
     downpcd2.estimate_normals(
-    search_param=o3d.geometry.KDTreeSearchParamHybrid(radius=0.1, max_nn=30))
+    search_param=o3d.geometry.KDTreeSearchParamHybrid(radius=0.1, max_nn=10))
     # o3d.estimate_normals(
     #     pdc_s,
     #     search_param=o3d.geometry.KDTreeSearchParamHybrid(radius=2,
