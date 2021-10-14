@@ -115,6 +115,10 @@ mk_con. make_confusion_matrix(cf_matrix, cbar=False)
 y_true = pd.Series(true_g, name="Actual")
 y_pred = pd.Series(pred, name="Predicted")
 df_confusion = pd.crosstab(y_true, y_pred)
-df_confusion.to_csv("cut_norm_1.csv")
+def color_rule(val):
+    return ['background-color:yellow' if x == 1 else 'background-color:#ffffff' for x in val]
+dfd = df_confusion.style.apply(color_rule, axis=1)
+dfd.to_excel('styled.xlsx', engine='openpyxl')
+
 print (df_confusion)
 plt.show()
