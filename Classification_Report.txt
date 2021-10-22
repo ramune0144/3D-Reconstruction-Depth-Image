@@ -1,0 +1,33 @@
+
+Classification Report:1
+              precision    recall  f1-score   support
+
+     bottles       0.68      0.93      0.79        72
+       bowls       0.92      0.67      0.77        72
+        jars       0.79      0.72      0.75        72
+
+    accuracy                           0.77       216
+   macro avg       0.80      0.77      0.77       216
+weighted avg       0.80      0.77      0.77       216
+
+Classification Report:1
+              precision    recall  f1-score   support
+
+     bottles       0.68      0.93      0.79        72
+       bowls       0.92      0.67      0.77        72
+        jars       0.79      0.72      0.75        72
+
+    accuracy                           0.77       216
+   macro avg       0.80      0.77      0.77       216
+weighted avg       0.80      0.77      0.77       216
+
+Classification Report:1
+              precision    recall  f1-score   support
+
+     bottles       0.68      0.93      0.79        72
+       bowls       0.92      0.67      0.77        72
+        jars       0.79      0.72      0.75        72
+
+    accuracy                           0.77       216
+   macro avg       0.80      0.77      0.77       216
+weighted avg       0.80      0.77      0.77       216

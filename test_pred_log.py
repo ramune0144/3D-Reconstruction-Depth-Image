@@ -5,7 +5,7 @@ from sklearn.metrics import confusion_matrix
 from itertools import groupby
 # 216
 from scr import point_read_dir
-with open('rmsss0.txt') as f:
+with open('rmsss0_s.txt') as f:
     lines = f.readlines()
 
 

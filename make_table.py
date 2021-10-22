@@ -37,7 +37,7 @@ for i in range(len(true_g)):
     y_true = pd.Series(true_g[i], name="Actual")
     y_pred = pd.Series(pred[i], name="Predicted")
     label=['bottles','bowls','jars']
-    cf_matrix = confusion_matrix(true_g[i], pred[i])
+    cf_matrix = confusion_matrix( pred[i],true_g[i] )
     # accuracy = np.trace(cf_matrix) / float(np.sum(cf_matrix))
     accuracy =accuracy_score(y_true, y_pred)
 
@@ -51,4 +51,4 @@ for i in range(len(true_g)):
     from sklearn.metrics import classification_report
     with open('Classification_Report.txt', 'a') as f:
         f.write(f'\nClassification Report:{i+1}\n')
-        f.write(classification_report(y_true, y_pred, target_names=['bottles', 'bowls', 'jars']))
+        f.write(classification_report( y_pred,y_true, target_names=['bottles', 'bowls', 'jars']))
