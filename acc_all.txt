@@ -1,1 +1,12 @@
-
+accuracy:3_x_270/test=0.7978723404255319
+accuracy:cut_o_1=0.0
+accuracy:cut_o_1=0.0
+accuracy:cut_o_1=0.0
+accuracy:cut_o_1=0.6666666666666666
+accuracy:cut_o_1=0.6666666666666666
+accuracy:cut_o_1=0.6666666666666666
+accuracy:cut_o_1=0.6666666666666666
+accuracy:cut_o_1=0.6666666666666666
+accuracy:cut_o_1=0.6666666666666666
+accuracy:cut_o_1=0.6666666666666666
+accuracy:cut_o_1=0.6666666666666666

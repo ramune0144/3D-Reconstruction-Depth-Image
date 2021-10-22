@@ -1,3 +1,4 @@
+
 from scr import icp_op3d, point_read_dir, mk_con
 from scr import RANSAC as rs
 import matplotlib.pyplot as plt
@@ -16,8 +17,7 @@ def ch_class(pred_name, class_name):
 
 
 rms = []
-name_table = ['cut_o_1', 'cut_x_90_1', 'cut_x_180_1',
-              'x_1_270', 'y_1_90', 'y_1_180', 'y_1_270', 'z_1_90']
+name_table = ['cut_o_1']
 
 class_name = []
 class_name = point_read_dir.read_dir_class(f'./class_pred_txt')[1]
@@ -62,18 +62,23 @@ for q in tqdm(range(len(name_table))):
                 name[ind].append(point_tra[q][1][i])
                 scr_name_app[ind].append(src_name)
                 fit_nes[ind].append(tran.fitness)
+                # with open(f'rmsss{q}.txt', 'a') as f:
+                #     f.write(f"name:{point_tra[q][1][i]}::rms:{tran.inlier_rmse}::scr_name:{src_name}::fit:{tran.fitness}\n")
+                # f.close()
     true_g = []
     pred = []
     class_pred = []
     class_true = []
-    print(rms)
+
+    print(list(list(t) for t in zip(rms[1], name[1], scr_name_app[1], fit_nes[1])))
     for j in range(len(rms)):
+        
         rms_a, name_a, scr_name_app_a, fit_nes_a = (list(t) for t in zip(
             *sorted(zip(rms[j], name[j], scr_name_app[j], fit_nes[j]))))
         #  for i in range(len(rms_a)):
         #  print(f'rms:{rms_a[i]} :: fit{fit_nes_a[i]} :: name::{ name_a[i]} :: scr_name::{scr_name_app_a[i]} ')
-
-        for i in range(4):
+        for i in range(1):
+            print(f"{name_a[i].split('.')[0] }={ scr_name_app_a[i].split('.')[0]}")
             if name_a[i].split('.')[0] == scr_name_app_a[i].split('.')[0]:
                 #  print(f'rms:{rms_a[i]} ::fit{fit_nes_a[i]}:: name::{ name_a[i]} :: scr_name::{scr_name_app_a[i]} ')
 
@@ -85,23 +90,11 @@ for q in tqdm(range(len(name_table))):
                     ch_class(name_a[i].split('.')[0], class_name))
                 print('True==>rms')
 
-        if not (name_a[0].split('.')[0] == scr_name_app_a[0].split('.')[0]):
+        if  (name_a[0].split('.')[0] != scr_name_app_a[0].split('.')[0]):
             fit_nes_a, name_a, scr_name_app_a, rms_a = (list(t) for t in zip(
                 *sorted(zip(fit_nes[j], name[j], scr_name_app[j], rms[j]), reverse=True)))
-            if name_a[0].split('.')[0] == scr_name_app_a[0].split('.')[0]:
-                #  print(f'rms:{rms_a[0]} ::fit{fit_nes_a[0]}:: name::{ name_a[0]} :: scr_name::{scr_name_app_a[0]} ')
-
-                true_g.append(name_a[i].split('.')[0])
-                pred.append(scr_name_app_a[i].split('.')[0])
-                class_pred .append(ch_class(
-                    scr_name_app_a[i].split('.')[0], class_name))
-                class_true .append(
-                    ch_class(name_a[i].split('.')[0], class_name))
-                print('True==>fit')
-
-            else:
-                found = False
-                for i in range(4):
+            found = False
+            for i in range(0):
                     if name_a[i].split('.')[0] == scr_name_app_a[i].split('.')[0]:
                        #  print(f'rms:{rms_a[i]} ::fit{fit_nes_a[i]}:: name::{ name_a[i]} :: scr_name::{scr_name_app_a[i]} ')
 
@@ -111,10 +104,10 @@ for q in tqdm(range(len(name_table))):
                             scr_name_app_a[i].split('.')[0], class_name))
                         class_true .append(
                             ch_class(name_a[i].split('.')[0], class_name))
-                        print('True==>c2')
+                        print('True==>fit')
                         found = True
 
-                if found == False:
+            if found == False:
 
                     true_g.append(name_a[i].split('.')[0])
                     pred.append(scr_name_app_a[i].split('.')[0])
