@@ -3,9 +3,29 @@ import time
 from numpy.core.fromnumeric import ptp
 from sklearn.metrics import confusion_matrix
 from itertools import groupby
+
+#                        _oo0oo_
+#                       o8888888o
+#                       88" . "88
+#                       (| -_- |)
+#                       0\  =  /0
+#                     ___/`---'\___
+#                   .' \|     |// '.
+#                  / \|||  :  |||// \
+#                 / _||||| -:- |||||- \
+#                |   | \\  -  /// |   |
+#                | \_|  ''\---/''  |_/ |
+#                \  .-\__  '-'  ___/-. /
+#              ___'. .'  /--.--\  `. .'___
+#           ."" '<  `.___\_<|>_/___.' >' "".
+#          | | :  `- \`.;`\ _ /`;.`/ - ` : | |
+#          \  \ `_.   \_ __\ /__ _/   .-` /  /
+#      =====`-.____`.___ \_____/___.-`___.-'=====
+#                        `=---='
+
 # 216
 from scr import point_read_dir
-with open('rmsss0_s.txt') as f:
+with open('3_y_90rmsss0.txt') as f:
     lines = f.readlines()
 
 
