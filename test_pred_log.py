@@ -1,8 +1,4 @@
-
-import time
-from numpy.core.fromnumeric import ptp
 from sklearn.metrics import confusion_matrix
-from itertools import groupby
 
 #                        _oo0oo_
 #                       o8888888o
@@ -102,19 +98,19 @@ for j in range(len(rms)):
     #  for i in range(len(rms_a)):
     #  print(f'rms:{rms_a[i]} :: fit{fit_nes_a[i]} :: name::{ name_a[i]} :: scr_name::{scr_name_app_a[i]} ')
     # print(scr_name_app_a)
-    for i in range(1):
-        found = False
-        if name_a[i].split('.')[0] == scr_name_app_a[i].split('.')[0]:
+    
+    found = False
+    if name_a[0].split('.')[0] == scr_name_app_a[0].split('.')[0]:
             #  print(f'rms:{rms_a[i]} ::fit{fit_nes_a[i]}:: name::{ name_a[i]} :: scr_name::{scr_name_app_a[i]} ')
 
-            true_g.append(name_a[i].split('.')[0])
-            pred.append(scr_name_app_a[i].split('.')[0])
+            true_g.append(name_a[0].split('.')[0])
+            pred.append(scr_name_app_a[0].split('.')[0])
 
             class_pred .append(ch_class(
-                scr_name_app_a[i].split('.')[0], class_name))
+                scr_name_app_a[0].split('.')[0], class_name))
             class_true .append(
-                ch_class(name_a[i].split('.')[0], class_name))
-            break
+                ch_class(name_a[0].split('.')[0], class_name))
+           
 
     if (name_a[0].split('.')[0] != scr_name_app_a[0].split('.')[0]):
         fit_nes_a, name_a, scr_name_app_a, rms_a = (list(t) for t in zip(
