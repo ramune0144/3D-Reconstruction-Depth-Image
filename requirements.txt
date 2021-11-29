@@ -7,4 +7,4 @@ pandas==1.1.5
 open3d==0.13.0
 Pillow==8.4.0
 pptk==0.1.0
-scikit_learn==1.0.1
+scikit_learn
